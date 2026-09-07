@@ -39,29 +39,29 @@ public class Main {
             );
 
             // 5. Interacción con el Frontend (Escribir y Presionar Enter)
-            emailBox.sendKeys("ivan.luna@email.com", Keys.TAB);
-            passBox.sendKeys("123456", Keys.ENTER);
+            emailBox.sendKeys("admin@correo.com", Keys.TAB);
+            passBox.sendKeys("123", Keys.ENTER);
 
             // 6. Esperar el resultado
 
-            //Opcion si el div se renderiza
-            // Localizador XPath que busca la clase y el texto exacto
-            By alertaConTexto = By.xpath("//div[contains(@class, 'alert-danger') and text()='Credenciales de Mock inválidas']");
+            //Opcion si el elemento se renderiza
+            // Localizador XPath que busca el titulo que aparece al entrar al sistema
+            By alertaConTexto = By.xpath("//h2[text()='Bienvenido al Sistema']");
 
             // Espera hasta que el elemento sea completamente visible en la pantalla
             WebElement mensaje = wait.until(ExpectedConditions.visibilityOfElementLocated(alertaConTexto));
 
             /*
-            //Opcion si el div se hace visible
-            // Localizador por la clase de la alerta de error
-            By alertaError = By.className("alert-danger");
+            //Opcion si el elemento se hace visible
+            // Localizador por la clase del titulo
+            By titulo = By.className("text-center");
 
-            // Espera explícita hasta que el texto exacto aparezca en ese div
-            wait.until(ExpectedConditions.textToBePresentInElementLocated(alertaError, "Credenciales de Mock inválidas"));
+            // Espera explícita hasta que el texto exacto aparezca en ese elemento
+            wait.until(ExpectedConditions.textToBePresentInElementLocated(titulo, "Bienvenido al Sistema"));
             */
 
-            // Imprime el título actual en consola
-            System.out.println("Título de la página: " + mensaje.getText());
+            // Imprime el mensaje encontrado en consola
+            System.out.println("Mensaje encontrado: " + mensaje.getText());
             Thread.sleep(4000);
         } catch (Exception e) {
             e.printStackTrace();
